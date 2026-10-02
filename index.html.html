@@ -1,0 +1,99 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Valgelish</title>
+ 
+    <style>
+        /* Estilos esenciales y minimalistas */
+        body {
+            font-family: sans-serif;
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            height: 100vh;
+            margin: 0;
+            display: flex; /* Centra todo en la pantalla */
+            justify-content: center;
+            align-items: center;
+        }
+ 
+        /* La tarjeta blanca que contiene todo */
+        .tarjeta {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            display: flex; /* Pone la imagen al lado del formulario */
+            gap: 30px;
+            align-items: center;
+        }
+ 
+        /* Campos de texto alineados y limpios */
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Evita que el input se desborde */
+        }
+ 
+        /* Botón llamativo */
+        button {
+            width: 100%;
+            background: #0284c7;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+ 
+    <script>
+        function guardarDatos(event){
+            event.preventDefault();
+            let nombre = document.getElementById("nombre").value;
+            let email = document.getElementById("email").value;
+            let telefono = document.getElementById("telefono").value;
+ 
+            let datos = `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}`;
+            let blob = new Blob([datos], { type: "text/plain"});
+            let enlace = document.createElement("a");
+            enlace.href = URL.createObjectURL(blob);
+            enlace.download = "registro.txt";
+            enlace.click();
+ 
+            alert("¡Datos guardados con éxito!");
+        }
+    </script>
+</head>
+<body>
+<div class="tarjeta">
+	<div>
+		<img src="images/images.jpg" width="250" alt="La Salle" style="border-radius: 8px;">
+	</div>
+	<div>
+		<h2 style="margin: 0 0 15px 0; color: #0284c7;">Registro</h2>
+		<form onsubmit="guardarDatos(event)">
+			<label>Nombre:</label>
+			<input type="text" id="nombre"required>
+
+			<label>Email:</label>
+			<input type="email" id="email"required>
+
+			<label>Teléfono:</label>
+			<input type="text" id="telefono"required>
+		
+			<div style="margin-bottom;15px">
+			<input type="radio"id="acepto"required name="terminos" required>
+			<label for="acepto">Acepto Términos</label>
+		</div>
+		<button type="submit">Enviar</button>
+	</form>
+	</div>
+		
+
+<div>
+</body>
+
+</html> 
